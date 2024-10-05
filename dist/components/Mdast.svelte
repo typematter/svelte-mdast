@@ -8,22 +8,15 @@
 
 <script lang="ts">
 	import definitionBuilder from '../builders/definition-builder.js';
+	import mdastComponents from '../defaults/mdast-components.js';
 
-	import defaultComponents from '../defaults/default-components.js';
-	import { Unist, setUnistContext } from '@accuser/svelte-unist';
+	import { setUnistContext, Unist, type UnistProps } from '@accuser/svelte-unist';
 
-	let {
-		ast,
-		...context
-	}: { ast: import('mdast').Root } & Partial<ReturnType<typeof setUnistContext>> = $props();
+	let { ast, components, ...rest }: { ast: import('mdast').Root } & UnistProps = $props();
 
 	let getDefinition = $derived.by(() => definitionBuilder(ast));
 
-	setUnistContext({
-		...context,
-		components: { ...defaultComponents, ...context.components },
-		getDefinition: (identifier) => getDefinition(identifier)
-	});
+	setUnistContext({ getDefinition: (identifier) => getDefinition(identifier) });
 </script>
 
-<Unist {ast} />
+<Unist {ast} components={{ ...mdastComponents, ...components }} {...rest} />

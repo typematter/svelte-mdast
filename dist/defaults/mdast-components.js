@@ -24,7 +24,7 @@ import TableRow from '../components/TableRow.svelte';
 import Text from '../components/Text.svelte';
 import ThematicBreak from '../components/ThematicBreak.svelte';
 import Yaml from '../components/Yaml.svelte';
-const components = {
+export default {
     blockquote: Blockquote,
     break: Break,
     code: Code,
@@ -52,4 +52,3 @@ const components = {
     thematicBreak: ThematicBreak,
     yaml: Yaml
 };
-export default components;
