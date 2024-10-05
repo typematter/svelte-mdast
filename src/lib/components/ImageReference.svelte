@@ -8,7 +8,7 @@
 	const { getDefinition } = getUnistContext();
 
 	let { url, title } = $derived.by(() => {
-		const definition = getDefinition(identifier);
+		const definition = getDefinition?.(identifier);
 
 		if (definition) {
 			return definition;
