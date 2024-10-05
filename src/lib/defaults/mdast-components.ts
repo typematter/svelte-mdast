@@ -25,9 +25,40 @@ import Text from '$lib/components/Text.svelte';
 import ThematicBreak from '$lib/components/ThematicBreak.svelte';
 import Yaml from '$lib/components/Yaml.svelte';
 import type { Components } from '@accuser/svelte-unist';
-import type { Node, Nodes } from 'mdast';
+import type { Nodes } from 'mdast';
 
-const components: Components<Nodes> = {
+declare module '@accuser/svelte-unist' {
+	export interface Nodes {
+		blockquote: import('mdast').Blockquote;
+		break: import('mdast').Break;
+		code: import('mdast').Code;
+		definition: import('mdast').Definition;
+		delete: import('mdast').Delete;
+		emphasis: import('mdast').Emphasis;
+		footnoteDefinition: import('mdast').FootnoteDefinition;
+		footnoteReference: import('mdast').FootnoteReference;
+		heading: import('mdast').Heading;
+		html: import('mdast').Html;
+		image: import('mdast').Image;
+		imageReference: import('mdast').ImageReference;
+		inlineCode: import('mdast').InlineCode;
+		link: import('mdast').Link;
+		linkReference: import('mdast').LinkReference;
+		list: import('mdast').List;
+		listItem: import('mdast').ListItem;
+		paragraph: import('mdast').Paragraph;
+		root: import('mdast').Root;
+		strong: import('mdast').Strong;
+		table: import('mdast').Table;
+		tableCell: import('mdast').TableCell;
+		tableRow: import('mdast').TableRow;
+		text: import('mdast').Text;
+		thematicBreak: import('mdast').ThematicBreak;
+		yaml: import('mdast').Yaml;
+	}
+}
+
+export default {
 	blockquote: Blockquote,
 	break: Break,
 	code: Code,
@@ -54,6 +85,4 @@ const components: Components<Nodes> = {
 	text: Text,
 	thematicBreak: ThematicBreak,
 	yaml: Yaml
-};
-
-export default components as Components<Node>;
+} satisfies Components<Nodes>;
