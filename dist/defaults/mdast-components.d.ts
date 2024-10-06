@@ -30,6 +30,12 @@ declare module '@accuser/svelte-unist' {
     }
     interface Context {
         getDefinition: ReturnType<typeof definitionBuilder>;
+        extensions: import('micromark-util-types').Extension[];
+        mdastExtensions: (import('mdast-util-from-markdown').Extension | import('mdast-util-from-markdown').Extension[])[];
+    }
+    interface Props {
+        extensions?: import('micromark-util-types').Extension[];
+        mdastExtensions?: (import('mdast-util-from-markdown').Extension | import('mdast-util-from-markdown').Extension[])[];
     }
 }
 declare const _default: {
