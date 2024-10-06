@@ -18,3 +18,15 @@ export type MdastExtensions<
 > = {
 	[key: string]: T;
 };
+
+declare module '@accuser/svelte-unist' {
+	export interface Context {
+		extensions: Extensions;
+		mdastExtensions: MdastExtensions;
+	}
+
+	export interface Props {
+		extensions?: Partial<Extensions>;
+		mdastExtensions?: Partial<MdastExtensions>;
+	}
+}
