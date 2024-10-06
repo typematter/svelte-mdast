@@ -59,23 +59,10 @@ declare module '@accuser/svelte-unist' {
 
 	export interface Context {
 		getDefinition: ReturnType<typeof definitionBuilder>;
-		extensions: import('micromark-util-types').Extension[];
-		mdastExtensions: (
-			| import('mdast-util-from-markdown').Extension
-			| import('mdast-util-from-markdown').Extension[]
-		)[];
-	}
-
-	export interface Props {
-		extensions?: import('micromark-util-types').Extension[];
-		mdastExtensions?: (
-			| import('mdast-util-from-markdown').Extension
-			| import('mdast-util-from-markdown').Extension[]
-		)[];
 	}
 }
 
-export default {
+export const components: Components = {
 	blockquote: Blockquote,
 	break: Break,
 	code: Code,
@@ -102,4 +89,4 @@ export default {
 	text: Text,
 	thematicBreak: ThematicBreak,
 	yaml: Yaml
-} satisfies Components;
+};
