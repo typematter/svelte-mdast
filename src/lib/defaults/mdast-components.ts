@@ -1,3 +1,4 @@
+import type definitionBuilder from '$lib/builders/definition-builder.js';
 import Blockquote from '$lib/components/Blockquote.svelte';
 import Break from '$lib/components/Break.svelte';
 import Code from '$lib/components/Code.svelte';
@@ -25,10 +26,9 @@ import Text from '$lib/components/Text.svelte';
 import ThematicBreak from '$lib/components/ThematicBreak.svelte';
 import Yaml from '$lib/components/Yaml.svelte';
 import type { Components } from '@accuser/svelte-unist';
-import type { Nodes } from 'mdast';
 
 declare module '@accuser/svelte-unist' {
-	export interface Nodes {
+	export interface ComponentMap {
 		blockquote: import('mdast').Blockquote;
 		break: import('mdast').Break;
 		code: import('mdast').Code;
@@ -55,6 +55,10 @@ declare module '@accuser/svelte-unist' {
 		text: import('mdast').Text;
 		thematicBreak: import('mdast').ThematicBreak;
 		yaml: import('mdast').Yaml;
+	}
+
+	export interface Context {
+		getDefinition: ReturnType<typeof definitionBuilder>;
 	}
 }
 
@@ -85,4 +89,4 @@ export default {
 	text: Text,
 	thematicBreak: ThematicBreak,
 	yaml: Yaml
-} satisfies Components<Nodes>;
+} satisfies Components;
