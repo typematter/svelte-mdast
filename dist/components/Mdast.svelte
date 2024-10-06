@@ -1,18 +1,10 @@
-<script lang="ts" module>
-	declare module '@accuser/svelte-unist' {
-		export interface UnistContext {
-			getDefinition: ReturnType<typeof definitionBuilder>;
-		}
-	}
-</script>
-
 <script lang="ts">
 	import definitionBuilder from '../builders/definition-builder.js';
 	import mdastComponents from '../defaults/mdast-components.js';
 
-	import { setUnistContext, Unist, type UnistProps } from '@accuser/svelte-unist';
+	import { setUnistContext, Unist, type Props } from '@accuser/svelte-unist';
 
-	let { ast, components, ...rest }: { ast: import('mdast').Root } & UnistProps = $props();
+	let { ast, components, ...rest }: { ast: import('mdast').Root } & Props = $props();
 
 	let getDefinition = $derived.by(() => definitionBuilder(ast));
 

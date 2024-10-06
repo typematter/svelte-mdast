@@ -1,11 +1,5 @@
-declare module '@accuser/svelte-unist' {
-    interface UnistContext {
-        getDefinition: ReturnType<typeof definitionBuilder>;
-    }
-}
-import definitionBuilder from '../builders/definition-builder.js';
-import { type UnistProps } from '@accuser/svelte-unist';
+import { type Props } from '@accuser/svelte-unist';
 declare const Mdast: import("svelte").Component<{
     ast: import("mdast").Root;
-} & UnistProps, {}, "">;
+} & Props, {}, "">;
 export default Mdast;

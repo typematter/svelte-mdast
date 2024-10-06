@@ -1,5 +1,6 @@
+import type definitionBuilder from '../builders/definition-builder.js';
 declare module '@accuser/svelte-unist' {
-    interface Nodes {
+    interface ComponentMap {
         blockquote: import('mdast').Blockquote;
         break: import('mdast').Break;
         code: import('mdast').Code;
@@ -26,6 +27,9 @@ declare module '@accuser/svelte-unist' {
         text: import('mdast').Text;
         thematicBreak: import('mdast').ThematicBreak;
         yaml: import('mdast').Yaml;
+    }
+    interface Context {
+        getDefinition: ReturnType<typeof definitionBuilder>;
     }
 }
 declare const _default: {
