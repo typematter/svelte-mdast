@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Mdast from '$lib/components/Mdast.svelte';
+	import * as Mdast from '$lib/components/mdast/index.js';
 	import { u } from 'unist-builder';
 
 	const ast: import('mdast').Root = u('root', [
@@ -7,4 +7,4 @@
 	]);
 </script>
 
-<Mdast {ast} />
+<Mdast.Root {ast} />
