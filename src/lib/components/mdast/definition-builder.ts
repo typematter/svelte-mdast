@@ -27,7 +27,7 @@ export const visit = <T extends Node>(
 	}
 };
 
-export default (root: import('mdast').Root | undefined) => {
+export const definitionBuilder = (root: import('mdast').Root | undefined) => {
 	if (root === undefined) return () => undefined;
 
 	const cache = definitionsFrom(root).reduce(

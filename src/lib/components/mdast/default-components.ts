@@ -1,31 +1,30 @@
-import type definitionBuilder from '$lib/builders/definition-builder.js';
-import Blockquote from '$lib/components/Blockquote.svelte';
-import Break from '$lib/components/Break.svelte';
-import Code from '$lib/components/Code.svelte';
-import Definition from '$lib/components/Definition.svelte';
-import Delete from '$lib/components/Delete.svelte';
-import Emphasis from '$lib/components/Emphasis.svelte';
-import FootnoteDefinition from '$lib/components/FootnoteDefinition.svelte';
-import FootnoteReference from '$lib/components/FootnoteReference.svelte';
-import Heading from '$lib/components/Heading.svelte';
-import Html from '$lib/components/Html.svelte';
-import Image from '$lib/components/Image.svelte';
-import ImageReference from '$lib/components/ImageReference.svelte';
-import InlineCode from '$lib/components/InlineCode.svelte';
-import Link from '$lib/components/Link.svelte';
-import LinkReference from '$lib/components/LinkReference.svelte';
-import List from '$lib/components/List.svelte';
-import ListItem from '$lib/components/ListItem.svelte';
-import Paragraph from '$lib/components/Paragraph.svelte';
-import Root from '$lib/components/Root.svelte';
-import Strong from '$lib/components/Strong.svelte';
-import Table from '$lib/components/Table.svelte';
-import TableCell from '$lib/components/TableCell.svelte';
-import TableRow from '$lib/components/TableRow.svelte';
-import Text from '$lib/components/Text.svelte';
-import ThematicBreak from '$lib/components/ThematicBreak.svelte';
-import Yaml from '$lib/components/Yaml.svelte';
 import type { Components } from '@accuser/svelte-unist';
+import Blockquote from './blockquote.svelte';
+import Break from './break.svelte';
+import Code from './code.svelte';
+import Definition from './definition.svelte';
+import Delete from './delete.svelte';
+import Emphasis from './emphasis.svelte';
+import FootnoteDefinition from './footnote-definition.svelte';
+import FootnoteReference from './footnote-reference.svelte';
+import Heading from './heading.svelte';
+import Html from './html.svelte';
+import ImageReference from './image-reference.svelte';
+import Image from './image.svelte';
+import InlineCode from './inline-code.svelte';
+import LinkReference from './link-reference.svelte';
+import Link from './link.svelte';
+import ListItem from './list-item.svelte';
+import List from './list.svelte';
+import Paragraph from './paragraph.svelte';
+import Root from './root.svelte';
+import Strong from './strong.svelte';
+import TableCell from './table-cell.svelte';
+import TableRow from './table-row.svelte';
+import Table from './table.svelte';
+import Text from './text.svelte';
+import ThematicBreak from './thematic-break.svelte';
+import Yaml from './yaml.svelte';
 
 declare module '@accuser/svelte-unist' {
 	export interface ComponentMap {
@@ -56,13 +55,9 @@ declare module '@accuser/svelte-unist' {
 		thematicBreak: import('mdast').ThematicBreak;
 		yaml: import('mdast').Yaml;
 	}
-
-	export interface Context {
-		getDefinition: ReturnType<typeof definitionBuilder>;
-	}
 }
 
-export const components: Components = {
+export const defaultComponents = {
 	blockquote: Blockquote,
 	break: Break,
 	code: Code,
@@ -89,4 +84,4 @@ export const components: Components = {
 	text: Text,
 	thematicBreak: ThematicBreak,
 	yaml: Yaml
-};
+} satisfies Components;

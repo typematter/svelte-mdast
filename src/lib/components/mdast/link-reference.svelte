@@ -1,22 +1,14 @@
 <script lang="ts">
-	import { getContext, Node } from '@accuser/svelte-unist';
+	import { getUnistContext, Node } from '@accuser/svelte-unist';
 
 	let { node }: { node: import('mdast').LinkReference } = $props();
 
 	// TODO: implement `referenceType`?
 	let { children, identifier } = $derived(node);
 
-	const { getDefinition } = getContext();
+	const { getDefinition } = getUnistContext();
 
-	let { url, title } = $derived.by(() => {
-		const definition = getDefinition?.(identifier);
-
-		if (definition) {
-			return definition;
-		} else {
-			return { url: '#', title: undefined };
-		}
-	});
+	let { url, title } = $derived(getDefinition?.(identifier) ?? { url: '#', title: undefined });
 </script>
 
 <a href={url} {title}
