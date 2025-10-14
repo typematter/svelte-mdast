@@ -3,4 +3,4 @@ declare module '@accuser/svelte-unist' {
         getDefinition?: ReturnType<typeof definitionBuilder>;
     }
 }
-export declare const definitionBuilder: (root: import("mdast").Root | undefined) => (identifier: string | null | undefined) => import("mdast").Definition | undefined;
+export declare const definitionBuilder: (root?: import("mdast").Root) => (identifier: string | null | undefined) => import("mdast").Definition | undefined;

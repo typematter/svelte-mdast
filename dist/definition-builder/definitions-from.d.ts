@@ -1,2 +1,1 @@
-import type { Root } from 'mdast';
-export declare const definitionsFrom: (root: Root) => import("mdast").Definition[];
+export declare const definitionsFrom: (root: import("mdast").Root) => import("mdast").Definition[];
