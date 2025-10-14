@@ -6,7 +6,7 @@ declare module '@accuser/svelte-unist' {
 	}
 }
 
-export const definitionBuilder = (root: import('mdast').Root | undefined) => {
+export const definitionBuilder = (root?: import('mdast').Root) => {
 	if (root === undefined) return () => undefined;
 
 	const cache = definitionsFrom(root).reduce(
@@ -15,5 +15,5 @@ export const definitionBuilder = (root: import('mdast').Root | undefined) => {
 	);
 
 	return (identifier: string | null | undefined) =>
-		identifier !== null && identifier !== undefined ? cache[identifier] : undefined;
+		identifier !== undefined && identifier !== null ? cache[identifier] : undefined;
 };

@@ -1,6 +1,13 @@
 import { isParent, type TypeGuard } from '@accuser/mdast-util-type-guards';
 import type { Node } from 'mdast';
 
+/**
+ * Recursively visit nodes in an Unist AST.
+ *
+ * @param tree - The root node to start visiting from
+ * @param guard - A type guard function to filter nodes
+ * @param visitor - A function to call on each visited node
+ */
 export const visit = <T extends Node>(
 	tree: Node,
 	guard: TypeGuard<T>,

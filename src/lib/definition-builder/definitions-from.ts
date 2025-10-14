@@ -1,5 +1,4 @@
+import { collect } from '$lib/utils/index.js';
 import { isDefinition } from '@accuser/mdast-util-type-guards';
-import type { Root } from 'mdast';
-import { collect } from './collect.js';
 
-export const definitionsFrom = (root: Root) => collect(root, isDefinition);
+export const definitionsFrom = (root: import('mdast').Root) => collect(root, isDefinition);
