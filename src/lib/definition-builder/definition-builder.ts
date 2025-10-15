@@ -1,11 +1,5 @@
 import { definitionsFrom } from './definitions-from.js';
 
-declare module '@accuser/svelte-unist' {
-	interface UnistContext {
-		getDefinition?: ReturnType<typeof definitionBuilder>;
-	}
-}
-
 export const definitionBuilder = (root?: import('mdast').Root) => {
 	if (root === undefined) return () => undefined;
 
