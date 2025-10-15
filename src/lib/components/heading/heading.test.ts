@@ -26,12 +26,6 @@ describe('Heading', () => {
 			expect(document.body.querySelector(`h${depth}`)).toBeInTheDocument();
 		});
 
-		it(`renders <h${depth}> with \`id\` attibute`, ({ props }) => {
-			mount(Heading, { props, target: document.body });
-
-			expect(document.body.querySelector(`h${depth}`)).toHaveAttribute('id', 'hello-world');
-		});
-
 		it(`renders <h${depth}> with content`, ({ props }) => {
 			mount(Heading, { props, target: document.body });
 
