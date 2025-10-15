@@ -4,24 +4,24 @@ Transform [Mdast](https://github.com/syntax-tree/mdast) into Svelte components.
 
 ## Installing
 
-Add the `@accuser/svelte-mdast` package dependency to your [Svelte](https://svelte.dev) / [SvelteKit](https://kit.svelte.dev) project:
+Add the `@typematter/svelte-mdast` package dependency to your [Svelte](https://svelte.dev) / [SvelteKit](https://kit.svelte.dev) project:
 
 ```sh
-npm install --save-dev @accuser/svelte-mdast
+npm install --save-dev @typematter/svelte-mdast
 
 # or
-yarn add -D @accuser/svelte-mdast
+yarn add -D @typematter/svelte-mdast
 
 # or
-pnpm add -D @accuser/svelte-mdast
+pnpm add -D @typematter/svelte-mdast
 ```
 
 ## Usage
 
 ```svelte
 <script lang="ts">
-	import { components } from '@accuser/svelte-mdast';
-	import { Unist } from '@accuser/svelte-unist';
+	import { components } from '@typematter/svelte-mdast';
+	import { Unist } from '@typematter/svelte-unist';
 	import { u } from 'unist-builder';
 
 	const ast: import('mdast').Root = u('root', [
