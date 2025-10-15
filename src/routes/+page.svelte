@@ -1,11 +1,11 @@
 <script lang="ts">
-	import * as Mdast from '$lib/components/index.js';
+	import { components } from '$lib/components/index.js';
 	import { Unist } from '@typematter/svelte-unist';
-	import { u } from 'unist-builder';
+	import type { PageProps } from './$types.js';
 
-	const ast: import('mdast').Root = u('root', [
-		u('heading', { depth: 1 as const }, [u('text', 'Hello, World!')])
-	]);
+	let { data }: PageProps = $props();
+
+	let { ast } = $derived(data);
 </script>
 
-<Unist {ast} components={Mdast.components} />
+<Unist {ast} {components} />

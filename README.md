@@ -20,7 +20,8 @@ pnpm add -D @accuser/svelte-mdast
 
 ```svelte
 <script lang="ts">
-	import { Mdast } from '@accuser/svelte-mdast';
+	import { components } from '@accuser/svelte-mdast';
+	import { Unist } from '@accuser/svelte-unist';
 	import { u } from 'unist-builder';
 
 	const ast: import('mdast').Root = u('root', [
@@ -28,7 +29,7 @@ pnpm add -D @accuser/svelte-mdast
 	]);
 </script>
 
-<Mdast {ast} />
+<Unist {ast} />
 ```
 
 ## Test
