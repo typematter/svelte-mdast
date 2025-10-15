@@ -2,6 +2,7 @@
 	import { Node } from '@typematter/svelte-unist';
 
 	let { node }: { node: import('mdast').FootnoteDefinition } = $props();
+
 	let { children, identifier, label } = $derived(node);
 </script>
 
