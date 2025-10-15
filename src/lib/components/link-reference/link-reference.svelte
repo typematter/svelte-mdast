@@ -3,7 +3,6 @@
 
 	let { node }: { node: import('mdast').LinkReference } = $props();
 
-	// TODO: implement `referenceType`?
 	let { children, identifier } = $derived(node);
 
 	const { getDefinition } = getUnistContext();
