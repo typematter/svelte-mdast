@@ -2,7 +2,7 @@ import { mount, type ComponentProps } from 'svelte';
 import { describe, expect, test } from 'vitest';
 import TableCell from './table-cell.svelte';
 
-describe('TableCell.svelte', () => {
+describe('TableCell', () => {
 	const it = test.extend<{
 		props: ComponentProps<typeof TableCell>;
 	}>({

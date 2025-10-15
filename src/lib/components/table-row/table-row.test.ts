@@ -2,7 +2,7 @@ import { mount, type ComponentProps } from 'svelte';
 import { beforeEach, describe, expect, test } from 'vitest';
 import TableRow from './table-row.svelte';
 
-describe('TableRow.svelte', () => {
+describe('TableRow', () => {
 	beforeEach(() => {
 		document.body = document.createElement('body');
 	});

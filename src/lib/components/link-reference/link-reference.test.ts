@@ -16,7 +16,7 @@ vi.mock('$lib/contexts/markdown-context.js', async () => {
 	};
 });
 
-describe('LinkReference.svelte', () => {
+describe('LinkReference', () => {
 	beforeEach(() => {
 		document.body = document.createElement('body');
 	});

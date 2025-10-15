@@ -2,7 +2,7 @@ import { mount, type ComponentProps } from 'svelte';
 import { beforeEach, describe, expect, test } from 'vitest';
 import FootnoteReference from './footnote-reference.svelte';
 
-describe('FootnoteReference.svelte', () => {
+describe('FootnoteReference', () => {
 	beforeEach(() => {
 		document.body = document.createElement('body');
 	});

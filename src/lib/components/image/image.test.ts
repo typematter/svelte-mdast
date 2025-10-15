@@ -2,7 +2,7 @@ import { mount, type ComponentProps } from 'svelte';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Image from './image.svelte';
 
-describe('Image.svelte', () => {
+describe('Image', () => {
 	beforeEach(() => {
 		document.body = document.createElement('body');
 	});

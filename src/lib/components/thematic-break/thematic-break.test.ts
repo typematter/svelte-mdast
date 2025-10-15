@@ -2,7 +2,7 @@ import { mount, type ComponentProps } from 'svelte';
 import { beforeEach, describe, expect, test } from 'vitest';
 import ThematicBreak from './thematic-break.svelte';
 
-describe('ThematicBreak.svelte', () => {
+describe('ThematicBreak', () => {
 	beforeEach(() => {
 		document.body = document.createElement('body');
 	});

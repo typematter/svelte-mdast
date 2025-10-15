@@ -2,7 +2,7 @@ import { mount, type ComponentProps } from 'svelte';
 import { describe, expect, test } from 'vitest';
 import Text from './text.svelte';
 
-describe('Text.svelte', () => {
+describe('Text', () => {
 	const it = test.extend<{ props: ComponentProps<typeof Text> }>({
 		props: {
 			node: {

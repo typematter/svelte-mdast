@@ -2,7 +2,7 @@ import { mount, type ComponentProps } from 'svelte';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Yaml from './yaml.svelte';
 
-describe('Yaml.svelte', () => {
+describe('Yaml', () => {
 	beforeEach(() => {
 		document.body = document.createElement('body');
 	});

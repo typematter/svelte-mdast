@@ -2,7 +2,7 @@ import { mount, type ComponentProps } from 'svelte';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Heading from './heading.svelte';
 
-describe('Heading.svelte', () => {
+describe('Heading', () => {
 	beforeEach(() => {
 		document.body = document.createElement('body');
 	});
