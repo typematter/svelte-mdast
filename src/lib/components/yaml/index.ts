@@ -1,4 +1,4 @@
-declare module '@accuser/svelte-unist' {
+declare module '@typematter/svelte-unist' {
 	interface ComponentMap {
 		yaml: import('mdast').Yaml;
 	}

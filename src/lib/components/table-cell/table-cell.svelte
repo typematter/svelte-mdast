@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-	import { Node } from '@accuser/svelte-unist';
+	import { Node } from '@typematter/svelte-unist';
 	import type { TableCell } from 'mdast';
 
 	let { node }: { node: import('mdast').TableCell } = $props();

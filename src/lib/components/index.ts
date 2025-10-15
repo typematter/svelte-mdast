@@ -52,7 +52,7 @@ export const components = {
 	text: Text,
 	thematicBreak: ThematicBreak,
 	yaml: Yaml
-} satisfies import('@accuser/svelte-unist').Components;
+} satisfies import('@typematter/svelte-unist').Components;
 
 export * from './blockquote/index.js';
 export * from './break/index.js';
@@ -80,3 +80,4 @@ export * from './table/index.js';
 export * from './text/index.js';
 export * from './thematic-break/index.js';
 export * from './yaml/index.js';
+

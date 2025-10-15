@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getUnistContext } from '@accuser/svelte-unist';
+	import { getUnistContext } from '@typematter/svelte-unist';
 
 	let { node }: { node: import('mdast').ImageReference } = $props();
 

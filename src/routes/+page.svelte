@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Mdast from '$lib/components/index.js';
-	import { Unist } from '@accuser/svelte-unist';
+	import { Unist } from '@typematter/svelte-unist';
 	import { u } from 'unist-builder';
 
 	const ast: import('mdast').Root = u('root', [
