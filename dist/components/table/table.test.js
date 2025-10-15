@@ -1,7 +1,7 @@
 import { mount } from 'svelte';
 import { describe, expect, test } from 'vitest';
 import Table from './table.svelte';
-describe('Table.svelte', () => {
+describe('Table', () => {
     const it = test.extend({
         props: {
             node: {

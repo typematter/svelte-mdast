@@ -3,7 +3,6 @@
 
 	let { node }: { node: import('mdast').ImageReference } = $props();
 
-	// TODO: implement `referenceType`?
 	let { alt, identifier } = $derived(node);
 
 	const { getDefinition } = getUnistContext();

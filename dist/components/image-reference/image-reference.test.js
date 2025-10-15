@@ -1,11 +1,11 @@
 import { mount } from 'svelte';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import ImageReference from './image-reference.svelte';
-vi.mock('$lib/contexts/markdown-context.js', async () => {
-    const actual = await vi.importActual('$lib/contexts/markdown-context.js');
+vi.mock('@typematter/svelte-unist', async () => {
+    const actual = await vi.importActual('@typematter/svelte-unist');
     return {
         ...actual,
-        getMarkdownContext: vi.fn().mockReturnValue({
+        getUnistContext: vi.fn().mockReturnValue({
             getDefinition: vi.fn().mockReturnValue({
                 title: 'Example',
                 url: 'https://example.com/image.jpg'
@@ -13,7 +13,7 @@ vi.mock('$lib/contexts/markdown-context.js', async () => {
         })
     };
 });
-describe('ImageReference.svelte', () => {
+describe('ImageReference', () => {
     beforeEach(() => {
         document.body = document.createElement('body');
     });

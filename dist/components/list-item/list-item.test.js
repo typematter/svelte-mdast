@@ -1,7 +1,7 @@
 import { mount } from 'svelte';
 import { describe, expect, test } from 'vitest';
 import ListItem from './list-item.svelte';
-describe('ListItem.svelte', () => {
+describe('ListItem', () => {
     const it = test.extend({
         props: {
             node: {

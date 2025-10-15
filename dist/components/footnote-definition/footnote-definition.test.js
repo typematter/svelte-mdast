@@ -1,7 +1,7 @@
 import { mount } from 'svelte';
 import { beforeEach, describe, expect, test } from 'vitest';
 import FootnoteDefinition from './footnote-definition.svelte';
-describe('FootnoteDefinition.svelte', () => {
+describe('FootnoteDefinition', () => {
     beforeEach(() => {
         document.body = document.createElement('body');
     });

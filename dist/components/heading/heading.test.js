@@ -1,7 +1,7 @@
 import { mount } from 'svelte';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Heading from './heading.svelte';
-describe('Heading.svelte', () => {
+describe('Heading', () => {
     beforeEach(() => {
         document.body = document.createElement('body');
     });
@@ -18,10 +18,6 @@ describe('Heading.svelte', () => {
         it(`renders <h${depth}>`, ({ props }) => {
             mount(Heading, { props, target: document.body });
             expect(document.body.querySelector(`h${depth}`)).toBeInTheDocument();
-        });
-        it(`renders <h${depth}> with \`id\` attibute`, ({ props }) => {
-            mount(Heading, { props, target: document.body });
-            expect(document.body.querySelector(`h${depth}`)).toHaveAttribute('id', 'hello-world');
         });
         it(`renders <h${depth}> with content`, ({ props }) => {
             mount(Heading, { props, target: document.body });

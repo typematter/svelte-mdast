@@ -1,7 +1,7 @@
 import { mount } from 'svelte';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Html from './html.svelte';
-describe('Html.svelte', () => {
+describe('Html', () => {
     beforeEach(() => {
         document.body = document.createElement('body');
     });

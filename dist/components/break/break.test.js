@@ -1,7 +1,7 @@
 import { mount } from 'svelte';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Break from './break.svelte';
-describe('Break.svelte', () => {
+describe('Break', () => {
     beforeEach(() => {
         document.body = document.createElement('body');
     });

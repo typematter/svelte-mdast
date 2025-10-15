@@ -1,7 +1,7 @@
 import { mount } from 'svelte';
 import { describe, expect, test } from 'vitest';
 import Paragraph from './paragraph.svelte';
-describe('Paragraph.svelte', () => {
+describe('Paragraph', () => {
     const it = test.extend({
         props: {
             node: {

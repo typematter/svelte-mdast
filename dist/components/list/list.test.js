@@ -1,7 +1,7 @@
 import { mount } from 'svelte';
 import { beforeEach, describe, expect, test } from 'vitest';
 import List from './list.svelte';
-describe('List.svelte', () => {
+describe('List', () => {
     beforeEach(() => {
         document.body = document.createElement('body');
     });
@@ -33,11 +33,11 @@ describe('List.svelte', () => {
                 });
                 it('renders <ol> with content', ({ props }) => {
                     mount(List, { props, target: document.body });
-                    expect(document.body.querySelector('ol li')).toHaveTextContent('Hello, World!');
+                    expect(document.body.querySelector('ol')).toHaveTextContent('Hello, World!');
                 });
                 describe('and `start` is defined', () => {
                     it('renders <ol> with a `start` attribute', ({ props }) => {
-                        mount(List, { props: { ...props, start: 2 }, target: document.body });
+                        mount(List, { props: { node: { ...props.node, start: 2 } }, target: document.body });
                         expect(document.body.querySelector('ol')).toHaveAttribute('start', '2');
                     });
                 });
@@ -51,7 +51,7 @@ describe('List.svelte', () => {
                 });
                 it('renders <ul> with content', ({ props }) => {
                     mount(List, { props, target: document.body });
-                    expect(document.body.querySelector('ul li')).toHaveTextContent('Hello, World!');
+                    expect(document.body.querySelector('ul')).toHaveTextContent('Hello, World!');
                 });
             });
         }

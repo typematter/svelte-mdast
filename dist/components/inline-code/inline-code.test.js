@@ -1,7 +1,7 @@
 import { mount } from 'svelte';
 import { beforeEach, describe, expect, test } from 'vitest';
 import InlineCode from './inline-code.svelte';
-describe('InlineCode.svelte', () => {
+describe('InlineCode', () => {
     beforeEach(() => {
         document.body = document.createElement('body');
     });
