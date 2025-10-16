@@ -11,5 +11,5 @@
 </script>
 
 <a href={url} {title}
-	>{#each children as child}<Node node={child} />{/each}</a
+	>{#each children as child (child)}<Node node={child} />{/each}</a
 >

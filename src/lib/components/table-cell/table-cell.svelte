@@ -8,7 +8,6 @@
 
 <script lang="ts">
 	import { Node } from '@typematter/svelte-unist';
-	import type { TableCell } from 'mdast';
 
 	let { node }: { node: import('mdast').TableCell } = $props();
 
@@ -18,5 +17,5 @@
 </script>
 
 <td {align}
-	>{#each children as child}<Node node={child} />{/each}</td
+	>{#each children as child (child)}<Node node={child} />{/each}</td
 >

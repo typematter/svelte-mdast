@@ -24,5 +24,5 @@
 </script>
 
 <tr
-	>{#each columns as column}<Node node={column} />{/each}</tr
+	>{#each columns as column (column)}<Node node={column} />{/each}</tr
 >

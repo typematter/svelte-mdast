@@ -9,5 +9,5 @@
 </script>
 
 <svelte:element this={tag} class:spread {start}
-	>{#each children as child}<Node node={child} />{/each}</svelte:element
+	>{#each children as child (child)}<Node node={child} />{/each}</svelte:element
 >

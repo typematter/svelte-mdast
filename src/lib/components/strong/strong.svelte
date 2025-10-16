@@ -6,5 +6,5 @@
 </script>
 
 <strong
-	>{#each children as child}<Node node={child} />{/each}</strong
+	>{#each children as child (child)}<Node node={child} />{/each}</strong
 >
