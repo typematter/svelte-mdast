@@ -10,6 +10,7 @@
 	let { url, title } = $derived(getDefinition?.(identifier) ?? { url: '#', title: undefined });
 </script>
 
+<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 <a href={url} {title}
 	>{#each children as child (child)}<Node node={child} />{/each}</a
 >
