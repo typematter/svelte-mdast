@@ -1,4 +1,6 @@
+import { Unist } from '@typematter/svelte-unist';
 import { mount } from 'svelte';
+import { u } from 'unist-builder';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Definition from './definition.svelte';
 describe('Definition', () => {
@@ -7,15 +9,15 @@ describe('Definition', () => {
     });
     const it = test.extend({
         props: {
-            node: {
-                type: 'definition',
+            ast: u('definition', {
                 identifier: 'example',
                 url: 'https://example.com'
-            }
+            }),
+            components: { definition: Definition }
         }
     });
     it('renders nothing', ({ props }) => {
-        mount(Definition, { props, target: document.body });
+        mount(Unist, { props, target: document.body });
         expect(document.body).toHaveTextContent('');
     });
 });

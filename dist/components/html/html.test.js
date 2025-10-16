@@ -1,4 +1,6 @@
+import { Unist } from '@typematter/svelte-unist';
 import { mount } from 'svelte';
+import { u } from 'unist-builder';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Html from './html.svelte';
 describe('Html', () => {
@@ -7,14 +9,12 @@ describe('Html', () => {
     });
     const it = test.extend({
         props: {
-            node: {
-                type: 'html',
-                value: '<pre>Hello, World!</pre>'
-            }
+            ast: u('html', { value: '<pre>Hello, World!</pre>' }),
+            components: { html: Html }
         }
     });
     it('renders html', ({ props }) => {
-        mount(Html, { props, target: document.body });
+        mount(Unist, { props, target: document.body });
         expect(document.body.querySelector('pre')).toBeInTheDocument();
     });
 });

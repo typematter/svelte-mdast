@@ -1,4 +1,6 @@
+import { Unist } from '@typematter/svelte-unist';
 import { mount } from 'svelte';
+import { u } from 'unist-builder';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import ImageReference from './image-reference.svelte';
 vi.mock('@typematter/svelte-unist', async () => {
@@ -19,24 +21,23 @@ describe('ImageReference', () => {
     });
     const it = test.extend({
         props: {
-            node: {
-                type: 'imageReference',
+            ast: u('imageReference', {
                 alt: 'Example',
                 identifier: 'example',
                 referenceType: 'full'
-            }
+            }), components: { imageReference: ImageReference }
         }
     });
     it('renders <img>', ({ props }) => {
-        mount(ImageReference, { props, target: document.body });
+        mount(Unist, { props, target: document.body });
         expect(document.body.querySelector('img')).toBeInTheDocument();
     });
     it('renders <img> with `src` attribute', ({ props }) => {
-        mount(ImageReference, { props, target: document.body });
+        mount(Unist, { props, target: document.body });
         expect(document.body.querySelector('img')).toHaveAttribute('src', 'https://example.com/image.jpg');
     });
     it('renders <img> with `alt` attribute', ({ props }) => {
-        mount(ImageReference, { props, target: document.body });
+        mount(Unist, { props, target: document.body });
         expect(document.body.querySelector('img')).toHaveAttribute('alt', 'Example');
     });
 });

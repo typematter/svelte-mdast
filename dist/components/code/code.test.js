@@ -1,4 +1,6 @@
+import { Unist } from '@typematter/svelte-unist';
 import { mount } from 'svelte';
+import { u } from 'unist-builder';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Code from './code.svelte';
 describe('Code', () => {
@@ -7,23 +9,24 @@ describe('Code', () => {
     });
     const it = test.extend({
         props: {
-            node: { lang: 'javascript', type: 'code', value: 'console.log("Hello, World!");' }
+            ast: u('code', { lang: 'javascript', value: 'console.log("Hello, World!");' }),
+            components: { code: Code }
         }
     });
     it('renders <pre>', ({ props }) => {
-        mount(Code, { props, target: document.body });
+        mount(Unist, { props, target: document.body });
         expect(document.body.querySelector('pre')).toBeInTheDocument();
     });
     it('renders <code> in <pre>', ({ props }) => {
-        mount(Code, { props, target: document.body });
+        mount(Unist, { props, target: document.body });
         expect(document.body.querySelector('pre > code')).toBeInTheDocument();
     });
     it('renders <code> in <pre> with `lang` attribute', ({ props }) => {
-        mount(Code, { props, target: document.body });
+        mount(Unist, { props, target: document.body });
         expect(document.body.querySelector('pre > code')).toHaveAttribute('lang', 'javascript');
     });
     it('renders <code> in <pre> with content', ({ props }) => {
-        mount(Code, { props, target: document.body });
+        mount(Unist, { props, target: document.body });
         expect(document.body.querySelector('pre > code[lang="javascript"]')).toHaveTextContent('console.log("Hello, World!");');
     });
 });

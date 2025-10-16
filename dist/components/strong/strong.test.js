@@ -1,26 +1,21 @@
+import { Unist } from '@typematter/svelte-unist';
 import { mount } from 'svelte';
+import { u } from 'unist-builder';
 import { describe, expect, test } from 'vitest';
 import Strong from './strong.svelte';
 describe('Strong', () => {
     const it = test.extend({
         props: {
-            node: {
-                children: [
-                    {
-                        type: 'text',
-                        value: 'Hello, World!'
-                    }
-                ],
-                type: 'strong'
-            }
+            ast: u('strong', [u('text', { value: 'Hello, World!' })]),
+            components: { strong: Strong }
         }
     });
     it('renders <strong>', ({ props }) => {
-        mount(Strong, { props, target: document.body });
+        mount(Unist, { props, target: document.body });
         expect(document.body.querySelector('strong')).toBeInTheDocument();
     });
     it('renders <strong> with content', ({ props }) => {
-        mount(Strong, { props, target: document.body });
+        mount(Unist, { props, target: document.body });
         expect(document.body.querySelector('strong')).toHaveTextContent('Hello, World!');
     });
 });

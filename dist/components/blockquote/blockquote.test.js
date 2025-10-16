@@ -1,4 +1,6 @@
+import { Unist } from '@typematter/svelte-unist';
 import { mount } from 'svelte';
+import { u } from 'unist-builder';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Blockquote from './blockquote.svelte';
 describe('BlockQuote', () => {
@@ -7,18 +9,18 @@ describe('BlockQuote', () => {
     });
     const it = test.extend({
         props: {
-            node: {
-                children: [{ type: 'paragraph', children: [{ type: 'text', value: 'Hello, World!' }] }],
-                type: 'blockquote'
+            ast: u('blockquote', [u('paragraph', [u('text', { value: 'Hello, World!' })])]),
+            components: {
+                blockquote: Blockquote
             }
         }
     });
     it('renders <blockquote>', ({ props }) => {
-        mount(Blockquote, { props, target: document.body });
+        mount(Unist, { props, target: document.body });
         expect(document.body.querySelector('blockquote')).toBeInTheDocument();
     });
     it('renders <blockquote> with content', ({ props }) => {
-        mount(Blockquote, { props, target: document.body });
+        mount(Unist, { props, target: document.body });
         expect(document.body.querySelector('blockquote')).toHaveTextContent('Hello, World!');
     });
 });
