@@ -1,5 +1,5 @@
 {
-	"name": "Svelte Unist",
+	"name": "Svelte Mdast",
 	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
 	"customizations": {
 		"vscode": {
