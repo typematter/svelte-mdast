@@ -49,7 +49,7 @@
 	},
 	"dependencies": {
 		"@accuser/mdast-util-type-guards": "^1.2.0",
-		"@typematter/svelte-unist": "^1.0.3",
+		"@typematter/svelte-unist": "^1.0.4",
 		"@types/mdast": "^4.0.4"
 	},
 	"devDependencies": {
