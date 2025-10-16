@@ -29,7 +29,8 @@ describe('ImageReference', () => {
 				alt: 'Example',
 				identifier: 'example',
 				referenceType: 'full'
-			}), components: { imageReference: ImageReference }
+			}),
+			components: { imageReference: ImageReference }
 		}
 	});
 

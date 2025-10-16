@@ -11,7 +11,8 @@ describe('FootnoteDefinition', () => {
 
 	const it = test.extend<{ props: ComponentProps<typeof Unist> }>({
 		props: {
-			ast: u('footnoteDefinition',
+			ast: u(
+				'footnoteDefinition',
 				{
 					identifier: '1',
 					label: '1'

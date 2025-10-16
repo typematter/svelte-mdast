@@ -80,4 +80,3 @@ export * from './table/index.js';
 export * from './text/index.js';
 export * from './thematic-break/index.js';
 export * from './yaml/index.js';
-
