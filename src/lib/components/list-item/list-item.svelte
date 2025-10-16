@@ -2,9 +2,13 @@
 	import { Node } from '@typematter/svelte-unist';
 
 	let { node }: { node: import('mdast').ListItem } = $props();
-	let { children } = $derived(node);
+
+	let { checked, children, spread } = $derived(node);
 </script>
 
-<li>
+<li class:spread>
+	{#if checked !== null && checked !== undefined}
+		<input type="checkbox" disabled {checked} />
+	{/if}
 	{#each children as child (child)}<Node node={child} />{/each}
 </li>
