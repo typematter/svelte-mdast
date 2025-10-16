@@ -8,6 +8,6 @@
 	let tag = $derived(ordered === true ? ('ol' as const) : ('ul' as const));
 </script>
 
-<svelte:element this={tag} class:spread {start}
+<svelte:element this={tag} class:spread start={ordered ? start : undefined}
 	>{#each children as child (child)}<Node node={child} />{/each}</svelte:element
 >
