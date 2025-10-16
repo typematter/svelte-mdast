@@ -1,4 +1,6 @@
+import { Unist } from '@typematter/svelte-unist';
 import { mount, type ComponentProps } from 'svelte';
+import { u } from 'unist-builder';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Link from './link.svelte';
 
@@ -7,30 +9,33 @@ describe('Link', () => {
 		document.body = document.createElement('body');
 	});
 
-	const it = test.extend<{ props: ComponentProps<typeof Link> }>({
+	const it = test.extend<{ props: ComponentProps<typeof Unist> }>({
 		props: {
-			node: {
-				children: [{ type: 'text', value: 'Hello, World!' }],
-				type: 'link',
-				url: 'https://example.com'
-			}
+			ast: u(
+				'link',
+				{
+					url: 'https://example.com'
+				},
+				[u('text', { value: 'Hello, World!' })]
+			),
+			components: { link: Link }
 		}
 	});
 
 	it('renders <a>', ({ props }) => {
-		mount(Link, { props, target: document.body });
+		mount(Unist, { props, target: document.body });
 
 		expect(document.body.querySelector('a')).toBeInTheDocument();
 	});
 
 	it('renders <a> with `href` attibute', ({ props }) => {
-		mount(Link, { props, target: document.body });
+		mount(Unist, { props, target: document.body });
 
 		expect(document.body.querySelector('a')).toHaveAttribute('href', 'https://example.com');
 	});
 
 	it('renders <a> with content', ({ props }) => {
-		mount(Link, { props, target: document.body });
+		mount(Unist, { props, target: document.body });
 
 		expect(document.body.querySelector('a')).toHaveTextContent('Hello, World!');
 	});

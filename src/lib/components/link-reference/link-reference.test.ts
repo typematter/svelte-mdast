@@ -1,4 +1,6 @@
+import { Unist } from '@typematter/svelte-unist';
 import { mount, type ComponentProps } from 'svelte';
+import { u } from 'unist-builder';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import LinkReference from './link-reference.svelte';
 
@@ -22,38 +24,41 @@ describe('LinkReference', () => {
 	});
 
 	const it = test.extend<{
-		props: ComponentProps<typeof LinkReference>;
+		props: ComponentProps<typeof Unist>;
 	}>({
 		props: {
-			node: {
-				type: 'linkReference',
-				identifier: 'example',
-				referenceType: 'full',
-				children: [{ type: 'text', value: 'Hello, World!' }]
-			}
+			ast: u(
+				'linkReference',
+				{
+					identifier: 'example',
+					referenceType: 'full'
+				},
+				[u('text', { value: 'Hello, World!' })]
+			),
+			components: { linkReference: LinkReference }
 		}
 	});
 
 	it('renders <a>', ({ props }) => {
-		mount(LinkReference, { props, target: document.body });
+		mount(Unist, { props, target: document.body });
 
 		expect(document.body.querySelector('a')).toBeInTheDocument();
 	});
 
 	it('renders <a> with `href` attibute', ({ props }) => {
-		mount(LinkReference, { props, target: document.body });
+		mount(Unist, { props, target: document.body });
 
 		expect(document.body.querySelector('a')).toHaveAttribute('href', 'https://example.com');
 	});
 
 	it('renders <a> with `title` attibute', ({ props }) => {
-		mount(LinkReference, { props, target: document.body });
+		mount(Unist, { props, target: document.body });
 
 		expect(document.body.querySelector('a')).toHaveAttribute('title', 'Example');
 	});
 
 	it('renders <a> with content', ({ props }) => {
-		mount(LinkReference, { props, target: document.body });
+		mount(Unist, { props, target: document.body });
 
 		expect(document.body.querySelector('a')).toHaveTextContent('Hello, World!');
 	});

@@ -1,4 +1,6 @@
+import { Unist } from '@typematter/svelte-unist';
 import { mount, type ComponentProps } from 'svelte';
+import { u } from 'unist-builder';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Heading from './heading.svelte';
 
@@ -9,25 +11,22 @@ describe('Heading', () => {
 
 	for (const depth of [1, 2, 3, 4, 5, 6] as const) {
 		const it = test.extend<{
-			props: ComponentProps<typeof Heading>;
+			props: ComponentProps<typeof Unist>;
 		}>({
 			props: {
-				node: {
-					children: [{ type: 'text', value: 'Hello, World!' }],
-					depth,
-					type: 'heading'
-				}
-			}
+				ast: u('heading', { depth }, [u('text', { value: 'Hello, World!' })]),
+				components: { heading: Heading }
+			},
 		});
 
 		it(`renders <h${depth}>`, ({ props }) => {
-			mount(Heading, { props, target: document.body });
+			mount(Unist, { props, target: document.body });
 
 			expect(document.body.querySelector(`h${depth}`)).toBeInTheDocument();
 		});
 
 		it(`renders <h${depth}> with content`, ({ props }) => {
-			mount(Heading, { props, target: document.body });
+			mount(Unist, { props, target: document.body });
 
 			expect(document.body.querySelector(`h${depth}`)).toHaveTextContent('Hello, World!');
 		});

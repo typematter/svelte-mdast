@@ -1,35 +1,25 @@
+import { Unist } from '@typematter/svelte-unist';
 import { mount, type ComponentProps } from 'svelte';
+import { u } from 'unist-builder';
 import { describe, expect, test } from 'vitest';
 import Table from './table.svelte';
 
 describe('Table', () => {
-	const it = test.extend<{ props: ComponentProps<typeof Table> }>({
+	const it = test.extend<{ props: ComponentProps<typeof Unist> }>({
 		props: {
-			node: {
-				type: 'table',
-				children: [
-					{
-						type: 'tableRow',
-						children: [
-							{
-								type: 'tableCell',
-								children: [{ type: 'text', value: 'Hello, World!' }]
-							}
-						]
-					}
-				]
-			}
+			ast: u('table', [u('tableRow', [u('tableCell', [u('text', { value: 'Hello, World!' })])])]),
+			components: { table: Table }
 		}
 	});
 
 	it('renders <table>', ({ props }) => {
-		mount(Table, { props, target: document.body });
+		mount(Unist, { props, target: document.body });
 
 		expect(document.body.querySelector('table')).toBeInTheDocument();
 	});
 
 	it('renders <table> with content', ({ props }) => {
-		mount(Table, { props, target: document.body });
+		mount(Unist, { props, target: document.body });
 
 		expect(document.body.querySelector('table')).toHaveTextContent('Hello, World!');
 	});

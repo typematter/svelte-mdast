@@ -1,4 +1,6 @@
+import { Unist } from '@typematter/svelte-unist';
 import { mount, type ComponentProps } from 'svelte';
+import { u } from 'unist-builder';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Yaml from './yaml.svelte';
 
@@ -7,17 +9,15 @@ describe('Yaml', () => {
 		document.body = document.createElement('body');
 	});
 
-	const it = test.extend<{ props: ComponentProps<typeof Yaml> }>({
+	const it = test.extend<{ props: ComponentProps<typeof Unist> }>({
 		props: {
-			node: {
-				type: 'yaml',
-				value: 'key: value'
-			}
+			ast: u('yaml', 'key: value'),
+			components: { yaml: Yaml }
 		}
 	});
 
 	it('renders nothing', ({ props }) => {
-		mount(Yaml, { props, target: document.body });
+		mount(Unist, { props, target: document.body });
 
 		expect(document.body).toHaveTextContent('');
 	});

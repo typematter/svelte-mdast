@@ -1,4 +1,6 @@
+import { Unist } from '@typematter/svelte-unist';
 import { mount, type ComponentProps } from 'svelte';
+import { u } from 'unist-builder';
 import { beforeEach, describe, expect, test } from 'vitest';
 import Emphasis from './emphasis.svelte';
 
@@ -7,23 +9,23 @@ describe('Emphasis', () => {
 		document.body = document.createElement('body');
 	});
 
-	const it = test.extend<{ props: ComponentProps<typeof Emphasis> }>({
+	const it = test.extend<{ props: ComponentProps<typeof Unist> }>({
 		props: {
-			node: {
-				children: [{ type: 'text', value: 'Hello, World!' }],
-				type: 'emphasis'
-			}
+			ast: u('emphasis', {
+				children: [u('text', { value: 'Hello, World!' })]
+			}),
+			components: { emphasis: Emphasis }
 		}
 	});
 
 	it('renders <em>', ({ props }) => {
-		mount(Emphasis, { props, target: document.body });
+		mount(Unist, { props, target: document.body });
 
 		expect(document.body.querySelector('em')).toBeInTheDocument();
 	});
 
 	it('renders <em> with content', ({ props }) => {
-		mount(Emphasis, { props, target: document.body });
+		mount(Unist, { props, target: document.body });
 
 		expect(document.body.querySelector('em')).toHaveTextContent('Hello, World!');
 	});

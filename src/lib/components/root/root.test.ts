@@ -2,17 +2,17 @@ import { Unist } from '@typematter/svelte-unist';
 import { mount, type ComponentProps } from 'svelte';
 import { u } from 'unist-builder';
 import { describe, expect, test } from 'vitest';
-import Text from './text.svelte';
+import Root from './root.svelte';
 
-describe('Text', () => {
+describe('Root', () => {
 	const it = test.extend<{ props: ComponentProps<typeof Unist> }>({
 		props: {
-			ast: u('text', { value: 'Hello, World!' }),
-			components: { text: Text }
+			ast: u('root', [u('paragraph', [u('text', { value: 'Hello, World!' })])]),
+			components: { root: Root }
 		}
 	});
 
-	it('renders text', ({ props }) => {
+	it('renders children', ({ props }) => {
 		mount(Unist, { props, target: document.body });
 
 		expect(document.body).toHaveTextContent('Hello, World!');
