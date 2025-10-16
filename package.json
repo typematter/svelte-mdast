@@ -49,12 +49,12 @@
 	},
 	"dependencies": {
 		"@accuser/mdast-util-type-guards": "^1.2.0",
-		"@typematter/svelte-unist": "^1.0.1",
+		"@typematter/svelte-unist": "^1.0.3",
 		"@types/mdast": "^4.0.4"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^6.1.1",
-		"@sveltejs/kit": "^2.46.5",
+		"@sveltejs/kit": "^2.47.0",
 		"@sveltejs/package": "^2.5.4",
 		"@sveltejs/vite-plugin-svelte": "6.2.1",
 		"@testing-library/jest-dom": "^6.9.1",
@@ -70,7 +70,7 @@
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
 		"publint": "^0.3.14",
-		"svelte": "5.40.0",
+		"svelte": "5.40.1",
 		"svelte-check": "^4.3.3",
 		"tslib": "^2.8.1",
 		"typescript": "^5.9.3",
