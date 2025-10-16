@@ -1,9 +1,13 @@
 import { Unist } from '@typematter/svelte-unist';
+import { beforeEach } from 'node:test';
 import { mount } from 'svelte';
 import { u } from 'unist-builder';
 import { describe, expect, test } from 'vitest';
 import Paragraph from './paragraph.svelte';
 describe('Paragraph', () => {
+    beforeEach(() => {
+        document.body = document.createElement('body');
+    });
     const it = test.extend({
         props: {
             ast: u('paragraph', [u('text', { value: 'Hello, World!' })]),

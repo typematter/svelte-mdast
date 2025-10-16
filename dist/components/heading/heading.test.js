@@ -12,7 +12,7 @@ describe('Heading', () => {
             props: {
                 ast: u('heading', { depth }, [u('text', { value: 'Hello, World!' })]),
                 components: { heading: Heading }
-            },
+            }
         });
         it(`renders <h${depth}>`, ({ props }) => {
             mount(Unist, { props, target: document.body });

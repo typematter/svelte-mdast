@@ -4,4 +4,5 @@
 	let { value } = $derived(node);
 </script>
 
+<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 {@html value}

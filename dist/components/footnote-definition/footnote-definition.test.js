@@ -28,30 +28,30 @@ describe('FootnoteDefinition', () => {
     });
     it('renders <div> with `id` attribute', ({ props }) => {
         mount(Unist, { props, target: document.body });
-        expect(document.body.querySelector('div#footnote-1')).toBeInTheDocument();
+        expect(document.body.querySelector('div#footnote-id-1')).toBeInTheDocument();
     });
     it('renders <p> in <div>', ({ props }) => {
         mount(Unist, { props, target: document.body });
-        expect(document.body.querySelector('div#footnote-1 > p')).toBeInTheDocument();
+        expect(document.body.querySelector('div#footnote-id-1 > p')).toBeInTheDocument();
     });
     it('renders <p> in <div> with `label` content', ({ props }) => {
         mount(Unist, { props, target: document.body });
-        expect(document.body.querySelector('div#footnote-1 > p')).toHaveTextContent('1');
+        expect(document.body.querySelector('div#footnote-id-1 > p')).toHaveTextContent('1');
     });
     it('renders <a> in <div>', ({ props }) => {
         mount(Unist, { props, target: document.body });
-        expect(document.body.querySelector('div#footnote-1 > a')).toBeInTheDocument();
+        expect(document.body.querySelector('div#footnote-id-1 > a')).toBeInTheDocument();
     });
     it('renders <a> in <div> with `href` attribute', ({ props }) => {
         mount(Unist, { props, target: document.body });
-        expect(document.body.querySelector('div#footnote-1 > a')).toHaveAttribute('href', '#footnote-ref-1');
+        expect(document.body.querySelector('div#footnote-id-1 > a')).toHaveAttribute('href', '#footnote-ref-id-1');
     });
     it('renders <a> in <div> with `aria-label', ({ props }) => {
         mount(Unist, { props, target: document.body });
-        expect(document.body.querySelector('div#footnote-1 > a')).toHaveAttribute('aria-label', 'Back to content');
+        expect(document.body.querySelector('div#footnote-id-1 > a')).toHaveAttribute('aria-label', 'Back to content');
     });
     it('renders <a> in <div> with content', ({ props }) => {
         mount(Unist, { props, target: document.body });
-        expect(document.body.querySelector('div#footnote-1 a')).toHaveTextContent('↩');
+        expect(document.body.querySelector('div#footnote-id-1 a')).toHaveTextContent('↩');
     });
 });

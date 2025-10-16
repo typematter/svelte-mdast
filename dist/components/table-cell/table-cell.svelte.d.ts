@@ -3,7 +3,6 @@ declare module 'mdast' {
         align?: AlignType | null;
     }
 }
-import type { TableCell } from 'mdast';
 type $$ComponentProps = {
     node: import('mdast').TableCell;
 };

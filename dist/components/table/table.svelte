@@ -21,7 +21,7 @@
 	{/if}
 	{#if rows.length}
 		<tbody>
-			{#each rows as row}<Node node={row} />{/each}
+			{#each rows as row (row)}<Node node={row} />{/each}
 		</tbody>
 	{/if}
 </table>
