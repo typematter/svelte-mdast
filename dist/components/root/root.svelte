@@ -1,33 +1,21 @@
 <script lang="ts">
-	import { isDefinition, isHeading } from '@accuser/mdast-util-type-guards';
-	import { collect, Node } from '@typematter/svelte-unist';
-	import GithubSlugger from 'github-slugger';
-	import { toString } from 'mdast-util-to-string';
-	import { SvelteMap } from 'svelte/reactivity';
+	import { Node } from '@typematter/svelte-unist';
+	import { getDefinitions } from './get-definitions.js';
+	import { getFrontmatter } from './get-frontmatter.js';
+	import { getHeadingIds } from './get-heading-ids.js';
 	import { setRootContext } from './root-context.js';
 
 	let { node }: { node: import('mdast').Root } = $props();
 
 	let { children } = $derived(node);
 
-	let definitions = $derived(
-		collect(node, isDefinition).reduce(
-			(acc, definition) => acc.set(definition.identifier, definition),
-			new SvelteMap<string, import('mdast').Definition>()
-		)
-	);
-
-	let headings = $derived.by(() => {
-		const slugger = new GithubSlugger();
-
-		return collect(node, isHeading).reduce(
-			(acc, heading) => acc.set(heading, slugger.slug(toString(heading.children))),
-			new SvelteMap<import('mdast').Heading, string>()
-		);
-	});
+	let definitions = $derived(getDefinitions(node));
+	let frontmatter = $derived(getFrontmatter(node));
+	let headings = $derived(getHeadingIds(node));
 
 	setRootContext({
 		getDefinition: (identifier) => definitions.get(identifier),
+		getFrontmatter: () => frontmatter,
 		getHeadingId: (heading) => headings.get(heading)
 	});
 </script>

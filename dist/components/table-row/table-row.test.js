@@ -1,8 +1,17 @@
 import { Unist } from '@typematter/svelte-unist';
 import { mount } from 'svelte';
 import { u } from 'unist-builder';
-import { beforeEach, describe, expect, test } from 'vitest';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 import TableRow from './table-row.svelte';
+vi.mock('$lib/components/table/index.js', async () => {
+    const actual = await vi.importActual('$lib/components/table/index.js');
+    return {
+        ...actual,
+        getTableContext: vi.fn().mockReturnValue({
+            getAlign: vi.fn().mockReturnValue(null)
+        })
+    };
+});
 describe('TableRow', () => {
     beforeEach(() => {
         document.body = document.createElement('body');

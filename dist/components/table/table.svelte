@@ -1,16 +1,14 @@
 <script lang="ts">
 	import { Node } from '@typematter/svelte-unist';
+	import { setTableContext } from './table-context.js';
 
 	let { node }: { node: import('mdast').Table } = $props();
 
-	let { align, children } = $derived(node);
+	let { align = null, children } = $derived(node);
 
-	let [head, ...rows] = $derived(
-		children.map((child) => ({
-			...child,
-			data: { ...child.data, align }
-		}))
-	);
+	setTableContext({ getAlign: () => align });
+
+	let [head, ...rows] = $derived(children);
 </script>
 
 <table>

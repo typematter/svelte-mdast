@@ -1,19 +1,14 @@
-<script lang="ts" module>
-	declare module 'mdast' {
-		interface TableCellData {
-			align?: AlignType | null;
-		}
-	}
-</script>
-
 <script lang="ts">
+	import { getTableRowContext } from '../table-row/index.js';
 	import { Node } from '@typematter/svelte-unist';
 
 	let { node }: { node: import('mdast').TableCell } = $props();
 
-	let { children, data } = $derived(node);
+	let { children } = $derived(node);
 
-	let align = $derived(data?.align);
+	let { getAlign } = getTableRowContext();
+
+	let align = $derived(getAlign(node));
 </script>
 
 <td {align}

@@ -1,8 +1,3 @@
-declare module 'mdast' {
-    interface TableRowData {
-        align?: AlignType[] | null;
-    }
-}
 type $$ComponentProps = {
     node: import('mdast').TableRow;
 };
