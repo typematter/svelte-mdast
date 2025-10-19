@@ -12,7 +12,7 @@
 
 	let definitions = $derived(
 		collect(node, isDefinition).reduce(
-			(acc, def) => Object.assign(acc, { [def.identifier]: def }),
+			(acc, definition) => Object.assign(acc, { [definition.identifier]: definition }),
 			{} as Record<string, import('mdast').Definition>
 		)
 	);
