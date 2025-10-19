@@ -3,7 +3,7 @@
 	import { collect, Node } from '@typematter/svelte-unist';
 	import GithubSlugger from 'github-slugger';
 	import { toString } from 'mdast-util-to-string';
-	import type { SvelteMap } from 'svelte/reactivity';
+	import { SvelteMap } from 'svelte/reactivity';
 	import { setRootContext } from './root-context.js';
 
 	let { node }: { node: import('mdast').Root } = $props();
@@ -22,7 +22,7 @@
 
 		return collect(node, isHeading).reduce(
 			(acc, heading) => acc.set(heading, slugger.slug(toString(heading.children))),
-			{} as SvelteMap<import('mdast').Heading, string>
+			new SvelteMap<import('mdast').Heading, string>()
 		);
 	});
 
