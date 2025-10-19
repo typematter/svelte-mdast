@@ -4,4 +4,5 @@ declare module '@typematter/svelte-unist' {
 	}
 }
 
+export { getTableRowContext } from './table-row-context.js';
 export { default as TableRow } from './table-row.svelte';

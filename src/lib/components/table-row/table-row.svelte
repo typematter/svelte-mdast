@@ -1,28 +1,29 @@
-<script lang="ts" module>
-	declare module 'mdast' {
-		interface TableRowData {
-			align?: AlignType[] | null;
-		}
-	}
-</script>
-
 <script lang="ts">
+	import { getTableContext } from '$lib/components/table/index.js';
 	import { Node } from '@typematter/svelte-unist';
+	import { SvelteMap } from 'svelte/reactivity';
+	import { setTableRowContext } from './table-row-context.js';
 
 	let { node }: { node: import('mdast').TableRow } = $props();
 
-	let { children, data } = $derived(node);
+	let { children } = $derived(node);
 
-	let align = $derived(data?.align);
+	let { getAlign } = getTableContext();
 
-	let columns = $derived(
-		children.map((child, index) => ({
-			...child,
-			data: { ...child.data, align: align ? align[index] : undefined }
-		}))
-	);
+	let alignment = $derived.by(() => {
+		const align = getAlign();
+
+		return children.reduce(
+			(acc, child, index) => acc.set(child, align ? align[index] || null : align),
+			new SvelteMap<import('mdast').TableCell, import('mdast').AlignType>()
+		);
+	});
+
+	setTableRowContext({
+		getAlign: (cell: import('mdast').TableCell) => alignment.get(cell) || null
+	});
 </script>
 
 <tr
-	>{#each columns as column (column)}<Node node={column} />{/each}</tr
+	>{#each children as child (child)}<Node node={child} />{/each}</tr
 >
