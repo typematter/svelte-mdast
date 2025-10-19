@@ -50,7 +50,10 @@
 	"dependencies": {
 		"@accuser/mdast-util-type-guards": "^1.2.0",
 		"@typematter/svelte-unist": "^1.0.4",
-		"@types/mdast": "^4.0.4"
+		"@types/mdast": "^4.0.4",
+		"github-slugger": "^2.0.0",
+		"mdast-util-to-string": "^4.0.0",
+		"yaml": "^2.8.1"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
@@ -67,10 +70,8 @@
 		"eslint": "^9.38.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.12.4",
-		"github-slugger": "^2.0.0",
 		"globals": "^16.4.0",
 		"jsdom": "^27.0.1",
-		"mdast-util-to-string": "^4.0.0",
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
 		"publint": "^0.3.14",
@@ -81,8 +82,7 @@
 		"typescript-eslint": "^8.46.1",
 		"unist-builder": "^4.0.0",
 		"vite": "^7.1.10",
-		"vitest": "^3.2.4",
-		"yaml": "^2.8.1"
+		"vitest": "^3.2.4"
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
