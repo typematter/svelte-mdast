@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { isDefinition, isHeading } from '@accuser/mdast-util-type-guards';
+	import { isDefinition, isHeading, isYaml } from '@accuser/mdast-util-type-guards';
 	import { collect, Node } from '@typematter/svelte-unist';
 	import GithubSlugger from 'github-slugger';
 	import { toString } from 'mdast-util-to-string';
 	import { SvelteMap } from 'svelte/reactivity';
+	import { parse } from 'yaml';
 	import { setRootContext } from './root-context.js';
+	import type { YamlValue } from './yaml-value.js';
 
 	let { node }: { node: import('mdast').Root } = $props();
 
@@ -17,6 +19,14 @@
 		)
 	);
 
+	let frontmatter = $derived.by(() => {
+		if (isYaml(node.children[0])) {
+			try {
+				return parse(node.children[0].value) as YamlValue;
+			} catch {}
+		}
+	});
+
 	let headings = $derived.by(() => {
 		const slugger = new GithubSlugger();
 
@@ -28,6 +38,7 @@
 
 	setRootContext({
 		getDefinition: (identifier) => definitions.get(identifier),
+		getFrontmatter: () => frontmatter,
 		getHeadingId: (heading) => headings.get(heading)
 	});
 </script>
