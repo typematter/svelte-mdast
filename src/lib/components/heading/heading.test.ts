@@ -1,8 +1,19 @@
 import { Unist } from '@typematter/svelte-unist';
 import { mount, type ComponentProps } from 'svelte';
 import { u } from 'unist-builder';
-import { beforeEach, describe, expect, test } from 'vitest';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 import Heading from './heading.svelte';
+
+vi.mock('$lib/components/root/index.js', async () => {
+	const actual = await vi.importActual('$lib/components/root/index.js');
+
+	return {
+		...actual,
+		getRootContext: vi.fn().mockReturnValue({
+			getHeadingId: vi.fn().mockReturnValue('hello-world')
+		})
+	};
+});
 
 describe('Heading', () => {
 	beforeEach(() => {
@@ -29,6 +40,12 @@ describe('Heading', () => {
 			mount(Unist, { props, target: document.body });
 
 			expect(document.body.querySelector(`h${depth}`)).toHaveTextContent('Hello, World!');
+		});
+
+		it(`render <h${depth}> with id`, ({ props }) => {
+			mount(Unist, { props, target: document.body });
+
+			expect(document.body.querySelector(`h${depth}`)).toHaveAttribute('id', 'hello-world');
 		});
 	}
 });
