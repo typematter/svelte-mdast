@@ -3,11 +3,11 @@ import { mount } from 'svelte';
 import { u } from 'unist-builder';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import ImageReference from './image-reference.svelte';
-vi.mock('@typematter/svelte-unist', async () => {
-    const actual = await vi.importActual('@typematter/svelte-unist');
+vi.mock('$lib/components/root/index.js', async () => {
+    const actual = await vi.importActual('$lib/components/root/index.js');
     return {
         ...actual,
-        getUnistContext: vi.fn().mockReturnValue({
+        getRootContext: vi.fn().mockReturnValue({
             getDefinition: vi.fn().mockReturnValue({
                 title: 'Example',
                 url: 'https://example.com/image.jpg'

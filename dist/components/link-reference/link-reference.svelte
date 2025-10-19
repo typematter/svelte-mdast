@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { getUnistContext, Node } from '@typematter/svelte-unist';
+	import { getRootContext } from '../root/index.js';
+	import { Node } from '@typematter/svelte-unist';
 
 	let { node }: { node: import('mdast').LinkReference } = $props();
 
 	let { children, identifier } = $derived(node);
 
-	const { getDefinition } = getUnistContext();
+	const { getDefinition } = getRootContext();
 
-	let { url, title } = $derived(getDefinition?.(identifier) ?? { url: '#', title: undefined });
+	let { url, title } = $derived(getDefinition(identifier) ?? { url: '#', title: undefined });
 </script>
 
 <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->

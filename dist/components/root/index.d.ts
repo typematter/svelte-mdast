@@ -3,4 +3,5 @@ declare module '@typematter/svelte-unist' {
         root: import('mdast').Root;
     }
 }
+export { getRootContext } from './root-context.js';
 export { default as Root } from './root.svelte';
