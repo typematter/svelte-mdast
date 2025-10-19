@@ -12,8 +12,8 @@
 
 	let definitions = $derived(
 		collect(node, isDefinition).reduce(
-			(acc, definition) => Object.assign(acc, { [definition.identifier]: definition }),
-			{} as Record<string, import('mdast').Definition>
+			(acc, definition) => acc.set(definition.identifier, definition),
+			new SvelteMap<string, import('mdast').Definition>()
 		)
 	);
 
@@ -27,8 +27,7 @@
 	});
 
 	setRootContext({
-		getDefinition: (identifier) =>
-			identifier === undefined || identifier === null ? undefined : definitions[identifier],
+		getDefinition: (identifier) => definitions.get(identifier),
 		getHeadingId: (heading) => headings.get(heading)
 	});
 </script>
