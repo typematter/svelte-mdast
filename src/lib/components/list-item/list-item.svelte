@@ -7,8 +7,8 @@
 </script>
 
 <li class:spread>
-	{#if checked !== null && checked !== undefined}
-		<input type="checkbox" disabled {checked} />
+	{#if typeof checked === 'boolean'}
+		<input type="checkbox" {checked} disabled />
 	{/if}
 	{#each children as child (child)}<Node node={child} />{/each}
 </li>
